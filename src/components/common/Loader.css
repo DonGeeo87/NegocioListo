@@ -1,0 +1,119 @@
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.loader-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 9999;
+}
+
+.loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.loader-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #2E7D32;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader-small .loader-spinner {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.loader-medium .loader-spinner {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+.loader-large .loader-spinner {
+  width: 48px;
+  height: 48px;
+  border-width: 4px;
+}
+
+.loader-primary .loader-spinner {
+  border-top-color: #2E7D32;
+}
+
+.loader-secondary .loader-spinner {
+  border-top-color: #666;
+}
+
+.loader-success .loader-spinner {
+  border-top-color: #4CAF50;
+}
+
+.loader-warning .loader-spinner {
+  border-top-color: #FF9800;
+}
+
+.loader-error .loader-spinner {
+  border-top-color: #F44336;
+}
+
+.loader-text {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .loader-fullscreen,
+  .loader-overlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .loader-text {
+    color: #ccc;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .loader-spinner {
+    animation: none;
+  }
+  
+  .loader-text {
+    animation: none;
+  }
+} 

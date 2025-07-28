@@ -1,0 +1,86 @@
+.facturas-page-container {
+  padding: 48px 0 32px 0;
+  min-height: calc(100vh - 80px);
+  background: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.facturas-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  background: var(--color-surface);
+  border-radius: 32px;
+  box-shadow: var(--shadow-lg);
+  min-height: 80vh;
+}
+
+.facturas-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-top: 32px;
+}
+
+.facturas-header h1 {
+  color: var(--color-title);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-2xl);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.facturas-header p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  margin-bottom: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: var(--color-surface);
+  border-radius: var(--border-radius-2xl);
+  padding: 32px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+  border: 1.5px solid var(--color-border);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .facturas-page-container {
+    padding: 16px 0;
+  }
+  
+  .facturas-container {
+    padding: 0 20px;
+  }
+  
+  .facturas-header {
+    padding-top: 20px;
+  }
+  
+  .modal-content {
+    padding: 20px;
+    margin: 10px;
+  }
+} 

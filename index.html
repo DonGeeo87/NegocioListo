@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="NegocioListo - Gestión completa de inventario, ventas y facturación para pequeños negocios. Aplicación web responsiva y fácil de usar." />
+    <meta name="keywords" content="negocio, inventario, ventas, facturación, gestión, emprendimiento" />
+    <meta name="author" content="NegocioListo" />
+    <meta name="theme-color" content="#2E7D32" />
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="NegocioListo" />
+    
+    <!-- Splash Screen -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="NegocioListo">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <link rel="apple-touch-startup-image" href="/splash.png">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="NegocioListo" />
+    <meta property="og:description" content="Gestión completa de inventario, ventas y facturación para pequeños negocios" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://negociolisto.app" />
+    
+    <title>NegocioListo - Gestión de Negocios</title>
+    
+    <!-- Splash Screen Styles -->
+    <style>
+      #splash-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(270deg, #3b82f6, #7c3aed, #a5b4fc, #f3f4f6);
+        background-size: 800% 800%;
+        animation: gradientBG 8s ease-in-out infinite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      #splash-screen.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .splash-logo {
+        width: 256px;
+        height: 256px;
+        background: white;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        animation: pulse 2s infinite;
+      }
+      
+      .splash-title {
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+      
+      .splash-subtitle {
+        color: rgba(255,255,255,0.8);
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      
+      .splash-loader {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-top: 3px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        25% { background-position: 50% 100%; }
+        50% { background-position: 100% 50%; }
+        75% { background-position: 50% 0%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      @media (max-width: 480px) {
+        .splash-logo {
+          width: 200px;
+          height: 200px;
+        }
+        
+        .splash-title {
+          font-size: 24px;
+        }
+        
+        .splash-subtitle {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+      <div class="splash-logo">
+        <img src="/icon-512.png" alt="Logo NegocioListo" style="width: 240px; height: 240px; object-fit: contain; border-radius: 16px;" />
+      </div>
+      <h1 class="splash-title">NegocioListo</h1>
+      <p class="splash-subtitle">Gestiona tu Negocio</p>
+      <div class="splash-loader"></div>
+    </div>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Ocultar splash screen cuando la app esté lista -->
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const splash = document.getElementById('splash-screen');
+          if (splash) {
+            splash.classList.add('fade-out');
+            setTimeout(() => {
+              splash.remove();
+            }, 500);
+          }
+        }, 1500);
+      });
+    </script>
+  </body>
+</html>

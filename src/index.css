@@ -1,0 +1,514 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Sistema de diseño unificado basado en el Dashboard */
+  --color-primary: #009fe3;
+  --color-primary-dark: #007bb6;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --color-info: #17a2b8;
+  
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  --color-title: #1e293b;
+  --color-text: #334155;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-border-hover: #3b82f6;
+  
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+  --border-radius-2xl: 24px;
+  
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+  --shadow-xl: 0 12px 48px rgba(0,0,0,0.12);
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Eliminar estilos de botones que pueden conflictuar con Mantine */
+/* Los estilos de botones serán manejados por Mantine */
+
+/* Forzar tamaños correctos para iconos - Evitar iconos gigantes */
+svg[data-icon] {
+  font-size: inherit !important;
+  width: inherit !important;
+  height: inherit !important;
+}
+
+/* Asegurar que los iconos de Tabler tengan tamaños razonables */
+[data-icon] {
+  font-size: inherit !important;
+  max-width: 100px !important;
+  max-height: 100px !important;
+}
+
+/* Estilos específicos para iconos en componentes de inventario */
+.mantine-Card svg,
+.mantine-ActionIcon svg,
+.mantine-Button svg {
+  font-size: inherit !important;
+  width: inherit !important;
+  height: inherit !important;
+}
+
+/* SOLUCIÓN ESPECÍFICA PARA LOS CHEVRONS GIGANTES */
+/* Controlar los chevrons de los componentes Select/Combobox de Mantine */
+[data-combobox-chevron="true"],
+.mantine-ComboboxChevron-chevron,
+.mantine-Select-chevron,
+.mantine-Combobox-chevron {
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+}
+
+/* Asegurar que los contenedores de chevrons también tengan tamaño correcto */
+.mantine-ComboboxChevron-root,
+.mantine-Select-chevronWrapper,
+.mantine-Combobox-chevronWrapper {
+  width: 16px !important;
+  height: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Forzar tamaños específicos para todos los SVG dentro de componentes Select */
+.mantine-Select svg,
+.mantine-Combobox svg,
+.mantine-MultiSelect svg {
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 16px !important;
+}
+
+/* Estilos adicionales para prevenir cualquier icono gigante */
+svg {
+  max-width: 100px !important;
+  max-height: 100px !important;
+}
+
+/* Específicamente para los chevrons problemáticos */
+svg[data-combobox-chevron="true"] {
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+}
+
+/* ESTILOS ESPECÍFICOS PARA FILTROS DEL INVENTARIO */
+.filters-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-end !important;
+  gap: 16px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.filters-row .mantine-TextInput-root {
+  flex: 1 !important;
+  min-width: 200px !important;
+}
+
+.filters-row .mantine-Select-root {
+  flex-shrink: 0 !important;
+}
+
+.filters-row .mantine-Select-root.category-select {
+  min-width: 180px !important;
+}
+
+.filters-row .mantine-Select-root.sort-select {
+  min-width: 160px !important;
+}
+
+.filters-row .mantine-Button-root.clear-button {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+/* FORZAR LAYOUT HORIZONTAL - ESTILOS DE ALTA PRIORIDAD */
+div.filters-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-end !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+div.filters-row > * {
+  display: inline-block !important;
+  vertical-align: bottom !important;
+}
+
+div.filters-row .mantine-TextInput-root {
+  flex: 1 !important;
+  min-width: 200px !important;
+  display: inline-block !important;
+}
+
+div.filters-row .mantine-Select-root {
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+}
+
+div.filters-row .mantine-Button-root {
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+}
+
+/* Responsive para filtros */
+@media (max-width: 768px) {
+  .filters-row {
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .filters-row .mantine-TextInput-root {
+    min-width: 150px !important;
+    font-size: 14px !important;
+  }
+  
+  .filters-row .mantine-Select-root.category-select {
+    min-width: 140px !important;
+    font-size: 14px !important;
+  }
+  
+  .filters-row .mantine-Select-root.sort-select {
+    min-width: 120px !important;
+    font-size: 14px !important;
+  }
+  
+  .filters-row .mantine-Button-root.clear-button {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+  }
+}
+
+/* FORZAR GRID RESPONSIVO PARA INVENTARIO */
+.mantine-SimpleGrid-root {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  gap: 24px !important;
+}
+
+/* Grid específico para estadísticas - 4 columnas en desktop */
+.mantine-SimpleGrid-root[data-stats="true"] {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+/* Grid específico para acciones rápidas - 2x2 */
+.mantine-SimpleGrid-root[data-actions="true"] {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+/* Grid específico para productos - 3-4 columnas */
+.mantine-SimpleGrid-root[data-products="true"] {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+}
+
+/* Responsive para grids */
+@media (max-width: 1200px) {
+  .mantine-SimpleGrid-root[data-stats="true"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .mantine-SimpleGrid-root[data-stats="true"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .mantine-SimpleGrid-root[data-actions="true"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .mantine-SimpleGrid-root[data-products="true"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ESTILOS ESPECÍFICOS PARA EL CALENDARIO - ALTA PRIORIDAD */
+/* Forzar el layout de 3 paneles del calendario */
+.calendario-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 16px !important;
+}
+
+/* Header del calendario - Forzar que esté arriba */
+.calendario-container > .mantine-Box-root:first-child {
+  order: 0 !important;
+  width: 100% !important;
+  margin-bottom: 24px !important;
+}
+
+/* Panel izquierdo - Lista de eventos */
+.calendario-events-panel {
+  order: 1 !important;
+  width: 100% !important;
+  margin-bottom: 24px !important;
+}
+
+/* Panel central - Calendario */
+.calendario-main-panel {
+  order: 2 !important;
+  width: 100% !important;
+  margin-bottom: 24px !important;
+}
+
+/* Panel inferior - Opciones */
+.calendario-options-panel {
+  order: 3 !important;
+  width: 100% !important;
+}
+
+/* Estilos específicos para el panel de opciones - Botones en una línea */
+.calendario-options-panel .mantine-Group-root {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+.calendario-options-panel .mantine-Group-root > * {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Responsive para botones del panel de opciones */
+@media (max-width: 768px) {
+  .calendario-options-panel .mantine-Group-root {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+  
+  .calendario-options-panel .mantine-Group-root > * {
+    flex: 1 !important;
+    min-width: 120px !important;
+  }
+}
+
+/* Grid del calendario - Forzar 7 columnas y sobrescribir configuraciones globales */
+.calendario-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Sobrescribir configuraciones globales de SimpleGrid para el calendario */
+.calendario-main-panel .mantine-SimpleGrid-root {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.calendario-main-panel .mantine-SimpleGrid-root[data-stats="true"],
+.calendario-main-panel .mantine-SimpleGrid-root[data-actions="true"],
+.calendario-main-panel .mantine-SimpleGrid-root[data-products="true"] {
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 0 !important;
+}
+
+/* Forzar que los días del calendario tengan el tamaño correcto */
+.calendario-main-panel .mantine-SimpleGrid-root > * {
+  width: 100% !important;
+  min-width: auto !important;
+  max-width: none !important;
+}
+
+/* Días del calendario */
+.calendario-day {
+  min-height: 100px !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  background: transparent !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.calendario-day:hover {
+  background: #f8fafc !important;
+}
+
+.calendario-day.today {
+  background: #fef3c7 !important;
+}
+
+.calendario-day.selected {
+  background: #e0e7ff !important;
+}
+
+/* Headers de días de la semana */
+.calendario-day-header {
+  text-align: center !important;
+  padding: 12px 8px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  font-size: 14px !important;
+  background: #f8fafc !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Eventos dentro del calendario */
+.calendario-event {
+  background: #8b5cf6 !important;
+  color: white !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  margin-bottom: 2px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Responsive para calendario */
+@media (min-width: 768px) {
+  .calendario-container {
+    display: grid !important;
+    grid-template-columns: 1fr 2fr !important;
+    grid-template-rows: auto auto auto !important;
+    gap: 24px !important;
+  }
+  
+  /* Header siempre arriba en desktop */
+  .calendario-container > .mantine-Box-root:first-child {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    order: 0 !important;
+  }
+  
+  .calendario-events-panel {
+    grid-column: 1 !important;
+    grid-row: 2 / 4 !important;
+    order: 1 !important;
+  }
+  
+  .calendario-main-panel {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    order: 2 !important;
+  }
+  
+  .calendario-options-panel {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+    order: 3 !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .calendario-container {
+    grid-template-columns: 350px 1fr !important;
+  }
+}
+
+/* Forzar que los componentes de Mantine en el calendario tengan los estilos correctos */
+.calendario-container .mantine-Grid-root {
+  display: grid !important;
+  grid-template-columns: 1fr 2fr !important;
+  gap: 24px !important;
+}
+
+.calendario-container .mantine-GridCol-root {
+  width: 100% !important;
+}
+
+.calendario-container .mantine-Paper-root {
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* Asegurar que los botones del calendario tengan el estilo correcto */
+.calendario-container .mantine-Button-root {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Estilos para las tarjetas de eventos */
+.calendario-event-card {
+  border: 2px solid #8b5cf6 !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  margin-bottom: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  background: white !important;
+}
+
+.calendario-event-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15) !important;
+}
